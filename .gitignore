@@ -1,0 +1,18 @@
+# 環境変数ファイル（絶対にGitHubにアップロードしない！）
+.env
+*.env
+
+# Python の一時ファイル
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Cursor の設定ファイル
+.cursor/
+
+# macOS の隠しファイル
+.DS_Store
+
+# Windows の隠しファイル
+Thumbs.db

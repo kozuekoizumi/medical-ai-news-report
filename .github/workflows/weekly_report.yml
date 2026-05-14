@@ -1,0 +1,38 @@
+name: 医療AI週次レポート送信
+
+on:
+  # 毎週月曜 朝7時（日本時間）に自動実行
+  # UTC日曜22:00 = JST月曜07:00
+  schedule:
+    - cron: '0 22 * * 0'
+
+  # 手動でも実行できるボタン（テスト・確認用）
+  workflow_dispatch:
+
+jobs:
+  send-weekly-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ステップ1：このリポジトリのコードをダウンロードする
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      # ステップ2：Python 3.12 を使えるようにする
+      - name: Python 3.12 をセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # ステップ3：必要なライブラリをインストールする
+      - name: ライブラリをインストール
+        run: pip install -r requirements.txt
+
+      # ステップ4：メインスクリプトを実行する
+      # 環境変数はGitHub Secretsから安全に読み込む（コードには書かない）
+      - name: レポートを生成してLINEに送信
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python src/report_generator.py

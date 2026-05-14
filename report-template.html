@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>医療AI週次ニュースレポート</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen py-6 px-4">
+
+  <div class="max-w-2xl mx-auto">
+
+    <!-- ヘッダー -->
+    <div class="bg-gradient-to-r from-teal-600 to-cyan-500 rounded-2xl p-6 mb-5 shadow-md">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🏥</span>
+        <h1 class="text-white text-xl font-bold tracking-wide">医療AI 週次ニュースレポート</h1>
+      </div>
+      <p class="text-teal-100 text-sm">透析室ナースのための最新AI情報まとめ</p>
+      <!-- PLACEHOLDER: 配信日（Pythonが書き換える） -->
+      <p class="text-teal-200 text-xs mt-2">📅 {{report_date}} 自動配信</p>
+    </div>
+
+    <!-- 今週のポイント -->
+    <div class="bg-amber-50 border-l-4 border-amber-400 rounded-xl p-4 mb-5 shadow-sm">
+      <h2 class="text-amber-700 font-bold text-sm mb-2">⚡ 今週のポイント</h2>
+      <!-- PLACEHOLDER: 今週のまとめ（Pythonが書き換える） -->
+      <p class="text-amber-900 text-sm leading-relaxed">{{weekly_summary}}</p>
+    </div>
+
+    <!-- PLACEHOLDER: ニュースカードブロック（Pythonがカテゴリごとに繰り返し生成） -->
+
+    <!-- カテゴリ：透析・腎臓 -->
+    <div class="mb-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="bg-teal-100 text-teal-700 text-sm font-bold px-3 py-1 rounded-full">💧 透析・腎臓領域</span>
+      </div>
+
+      <!-- ニュースカード（1件分のサンプル） -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-4 mb-3">
+        <div class="flex items-start justify-between gap-2">
+          <h3 class="text-slate-800 font-bold text-sm leading-snug flex-1">
+            東北大×NEC、透析中の除水量決定を支援するAIを開発。精度90%・透析専門医と同等の性能
+          </h3>
+          <span class="text-xs text-teal-600 bg-teal-50 px-2 py-1 rounded-full whitespace-nowrap ml-2">注目</span>
+        </div>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+          約40万セッションの透析データで学習した深層学習AIが、除水量の決定を支援。専門医が不在の施設でも均一な判断が可能になる可能性。
+        </p>
+        <a href="https://example.com" class="text-teal-600 text-sm mt-3 flex items-center gap-1 py-1 font-medium hover:underline">
+          🔗 記事を読む →
+        </a>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-4 mb-3">
+        <h3 class="text-slate-800 font-bold text-sm leading-snug">
+          腹膜透析にAI活用——予後予測から遠隔管理まで（臨牀透析2026年2月号）
+        </h3>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+          腹膜透析にAI・機械学習を応用。合併症予測・デジタルツインによる治療シミュレーションなど個別化医療の実現に向けた最新動向をまとめた特集。
+        </p>
+        <a href="https://example.com" class="text-teal-600 text-sm mt-3 flex items-center gap-1 py-1 font-medium hover:underline">
+          🔗 記事を読む →
+        </a>
+      </div>
+    </div>
+
+    <!-- カテゴリ：看護・病院運営 -->
+    <div class="mb-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="bg-violet-100 text-violet-700 text-sm font-bold px-3 py-1 rounded-full">🩺 看護・病院運営</span>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-4 mb-3">
+        <div class="flex items-start justify-between gap-2">
+          <h3 class="text-slate-800 font-bold text-sm leading-snug flex-1">
+            【2026年6月施行】診療報酬改定でAI活用が加算対象に。看護師配置基準も緩和へ
+          </h3>
+          <span class="text-xs text-violet-600 bg-violet-50 px-2 py-1 rounded-full whitespace-nowrap ml-2">現場直結</span>
+        </div>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+          生成AIなど高度ICT活用が加算評価の対象に。ICT活用で看護配置を1割緩和できる制度も。AI導入を進める病院で年間1,400万円の増収ケースも報告。
+        </p>
+        <a href="https://example.com" class="text-teal-600 text-sm mt-3 flex items-center gap-1 py-1 font-medium hover:underline">
+          🔗 記事を読む →
+        </a>
+      </div>
+    </div>
+
+    <!-- カテゴリ：医療AI全般 -->
+    <div class="mb-5">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="bg-sky-100 text-sky-700 text-sm font-bold px-3 py-1 rounded-full">🤖 医療AI全般</span>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-4 mb-3">
+        <h3 class="text-slate-800 font-bold text-sm leading-snug">
+          外科特化型生成AI、胃がん手術実証で有用性80%超——2026年中に事業化へ
+        </h3>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+          慶應義塾大学病院での実証実験で臨床的有用性82.9%を達成。外科医と対話しながら手術をサポートするAIが実用段階へ近づいている。
+        </p>
+        <a href="https://example.com" class="text-teal-600 text-sm mt-3 flex items-center gap-1 py-1 font-medium hover:underline">
+          🔗 記事を読む →
+        </a>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-4 mb-3">
+        <h3 class="text-slate-800 font-bold text-sm leading-snug">
+          大阪大学病院、生成AIで治験文書の作成時間を60分→15分に短縮
+        </h3>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">
+          ユビーのAIを導入し、データ整理・分析業務は75分→1分30秒に大幅短縮。医療現場の事務作業効率化が加速している。
+        </p>
+        <a href="https://example.com" class="text-teal-600 text-sm mt-3 flex items-center gap-1 py-1 font-medium hover:underline">
+          🔗 記事を読む →
+        </a>
+      </div>
+    </div>
+
+    <!-- 今週の気づきメモ欄 -->
+    <div class="bg-slate-100 rounded-xl p-4 mb-5 border border-dashed border-slate-300">
+      <h2 class="text-slate-600 font-bold text-sm mb-1">📝 今週の気づき（自分メモ用）</h2>
+      <p class="text-slate-400 text-sm">気になった記事やひと言感想をスプレッドシートに書いておこう</p>
+    </div>
+
+    <!-- フッター -->
+    <div class="text-center text-slate-400 text-sm pb-6">
+      <p>このレポートは自動生成されています</p>
+      <!-- PLACEHOLDER: 次回配信日（Pythonが書き換える） -->
+      <p class="mt-1">次回配信：{{next_report_date}} 朝7時</p>
+    </div>
+
+  </div>
+</body>
+</html>
