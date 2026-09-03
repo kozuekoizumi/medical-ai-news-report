@@ -9,6 +9,11 @@ on:
   # 手動でも実行できるボタン（テスト・確認用）
   workflow_dispatch:
 
+# 60日ルール対策（下の「活動を記録する」ステップ）でリポジトリにpushするため、
+# 書き込み権限を明示的に許可する
+permissions:
+  contents: write
+
 jobs:
   send-weekly-report:
     runs-on: ubuntu-latest
@@ -36,3 +41,15 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
         run: python src/report_generator.py
+
+      # ステップ5：リポジトリに「活動」を記録する（60日ルール対策）
+      # GitHubは「60日間コミット等の活動が無いリポジトリ」の自動実行(schedule)を
+      # 停止してしまう仕様があるため、実行ごとに空コミットをpushして
+      # 「活動あり」の状態を保つ。中身の変更は無いので他のファイルには影響しない。
+      - name: 活動を記録する（空コミット）
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: keep-alive（60日ルール対策・自動実行）"
+          git push
